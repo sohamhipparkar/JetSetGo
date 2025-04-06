@@ -4,18 +4,34 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   
   // Get current path to set active tab automatically
   const [activeTab, setActiveTab] = useState('dashboard');
   
-  // This useEffect will run on client-side and determine the active tab based on URL
+  // Handle scroll effect for navbar
   useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // This useEffect will run on client-side and determine the active tab based on URL
     const path = window.location.pathname;
     if (path === '/') setActiveTab('dashboard');
     else if (path.includes('/flights')) setActiveTab('flights');
     else if (path.includes('/passengers')) setActiveTab('passengers');
+    else if (path.includes('/maintenance')) setActiveTab('maintenance');
     else if (path.includes('/bookings')) setActiveTab('bookings');
     else if (path.includes('/reports')) setActiveTab('reports');
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   const toggleMenu = () => {
@@ -34,23 +50,29 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-900 via-blue-800 to-blue-700 shadow-xl">
+    <nav className={`w-full transition-all duration-300 z-50 ${
+      scrolled 
+        ? "bg-indigo-900 shadow-xl" 
+        : "bg-gradient-to-r from-indigo-900 via-blue-800 to-blue-700 shadow-xl"
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center">
             <Link to="/">
-            <div className="flex-shrink-0 flex items-center">
-              <div className="p-1.5 bg-white rounded-full shadow-lg transform hover:scale-110 transition-transform duration-300">
-                <svg className="h-8 w-8 text-blue-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 16H4C4 11.5 7 8 12 8C13.3 8 14.5 8.3 15.6 8.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 8V4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M6.5 19.5L18.5 19.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M22 12L17 17L14 16L18 12L14 8L17 7L22 12Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <div className={`flex-shrink-0 flex items-center transform transition-all duration-300 ${
+                scrolled ? "scale-95" : ""
+              }`}>
+                <div className="p-1.5 bg-white rounded-full shadow-lg transform hover:scale-110 transition-transform duration-300">
+                  <svg className="h-8 w-8 text-blue-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 16H4C4 11.5 7 8 12 8C13.3 8 14.5 8.3 15.6 8.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 8V4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6.5 19.5L18.5 19.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 12L17 17L14 16L18 12L14 8L17 7L22 12Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span className="ml-3 text-white font-bold text-xl tracking-wide hover:text-blue-200 transition-colors duration-300">JetSetGo</span>
               </div>
-              <span className="ml-3 text-white font-bold text-xl tracking-wide hover:text-blue-200 transition-colors duration-300">JetSetGo</span>
-            </div>
             </Link>
             {/* Desktop Nav Links - with animated active tab indicator */}
             <div className="hidden md:ml-8 md:flex md:space-x-6">
@@ -105,6 +127,24 @@ const Navbar = () => {
               >
                 Passengers
                 {activeTab === 'passengers' && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 rounded-t-md shadow-md transform origin-left animate-grow"></span>
+                )}
+              </a>
+              <a 
+                href="/maintenance" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleTabClick('maintenance');
+                  window.location.href = '/maintenance';
+                }}
+                className={`px-3 py-2 rounded-sm font-medium transition-all duration-300 ease-in-out relative ${
+                  activeTab === 'maintenance' 
+                    ? 'text-white' 
+                    : 'text-blue-100 hover:text-white'
+                }`}
+              >
+                Maintenance
+                {activeTab === 'maintenance' && (
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 rounded-t-md shadow-md transform origin-left animate-grow"></span>
                 )}
               </a>
@@ -247,7 +287,7 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile menu - animated slide down */}
+      {/* Mobile menu - animated slide down with staggered items */}
       <div 
         className={`md:hidden shadow-lg border-t border-blue-700 overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -260,8 +300,12 @@ const Navbar = () => {
               e.preventDefault();
               handleTabClick('dashboard');
               window.location.href = '/';
+              setIsOpen(false);
             }}
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+            style={{ transitionDelay: isOpen ? '75ms' : '0ms' }}
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+              isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+            } ${
               activeTab === 'dashboard' 
                 ? 'text-white bg-blue-800 shadow-inner transform translate-x-1' 
                 : 'text-blue-100 hover:bg-blue-800 hover:text-white'
@@ -275,8 +319,12 @@ const Navbar = () => {
               e.preventDefault();
               handleTabClick('flights');
               window.location.href = '/flights';
+              setIsOpen(false);
             }}
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+            style={{ transitionDelay: isOpen ? '150ms' : '0ms' }}
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+              isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+            } ${
               activeTab === 'flights' 
                 ? 'text-white bg-blue-800 shadow-inner transform translate-x-1' 
                 : 'text-blue-100 hover:bg-blue-800 hover:text-white'
@@ -290,8 +338,12 @@ const Navbar = () => {
               e.preventDefault();
               handleTabClick('passengers');
               window.location.href = '/passengers';
+              setIsOpen(false);
             }}
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+            style={{ transitionDelay: isOpen ? '225ms' : '0ms' }}
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+              isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+            } ${
               activeTab === 'passengers' 
                 ? 'text-white bg-blue-800 shadow-inner transform translate-x-1' 
                 : 'text-blue-100 hover:bg-blue-800 hover:text-white'
@@ -300,13 +352,36 @@ const Navbar = () => {
             Passengers
           </a>
           <a 
+            href="/maintenance" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleTabClick('maintenance');
+              window.location.href = '/maintenance';
+              setIsOpen(false);
+            }}
+            style={{ transitionDelay: isOpen ? '300ms' : '0ms' }}
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+              isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+            } ${
+              activeTab === 'maintenance' 
+                ? 'text-white bg-blue-800 shadow-inner transform translate-x-1' 
+                : 'text-blue-100 hover:bg-blue-800 hover:text-white'
+            }`}
+          >
+            Maintenance
+          </a>
+          <a 
             href="/bookings" 
             onClick={(e) => {
               e.preventDefault();
               handleTabClick('bookings');
               window.location.href = '/bookings';
+              setIsOpen(false);
             }}
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+            style={{ transitionDelay: isOpen ? '375ms' : '0ms' }}
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+              isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+            } ${
               activeTab === 'bookings' 
                 ? 'text-white bg-blue-800 shadow-inner transform translate-x-1' 
                 : 'text-blue-100 hover:bg-blue-800 hover:text-white'
@@ -320,8 +395,12 @@ const Navbar = () => {
               e.preventDefault();
               handleTabClick('reports');
               window.location.href = '/reports';
+              setIsOpen(false);
             }}
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
+            style={{ transitionDelay: isOpen ? '450ms' : '0ms' }}
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+              isOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+            } ${
               activeTab === 'reports' 
                 ? 'text-white bg-blue-800 shadow-inner transform translate-x-1' 
                 : 'text-blue-100 hover:bg-blue-800 hover:text-white'
@@ -367,6 +446,11 @@ const customStyles = `
 
 .animate-grow {
   animation: grow 0.3s ease-out forwards;
+}
+
+/* Add additional page padding to account for fixed navbar */
+body {
+  padding-top: 4rem;
 }
 `;
 

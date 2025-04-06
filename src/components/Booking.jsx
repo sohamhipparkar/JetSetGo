@@ -3,7 +3,7 @@ import { Calendar, Clock, Plane, ChevronLeft, ChevronDown, ChevronRight , Search
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const Bookings = () => {
+const Booking = () => {
   const [activeTab, setActiveTab] = useState('upcoming');
   const [sortBy, setSortBy] = useState('date');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -653,4 +653,4 @@ const Bookings = () => {
   );
 };
 
-export default Bookings;
+export default Booking;

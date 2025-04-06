@@ -704,6 +704,7 @@ const Dashboard = () => {
           </div>
           
           <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl shadow-lg overflow-hidden text-white hover-float">
+            <Link to="/maintenance">
             <div className="p-5">
               <div className="flex items-center">
                 <svg className="h-8 w-8 text-purple-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -718,6 +719,7 @@ const Dashboard = () => {
                 Open Maintenance
               </button>
             </div>
+            </Link>
           </div>
         </div>
       </div>

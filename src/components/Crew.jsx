@@ -75,15 +75,71 @@ const Crew = () => {
       
       {/* Hero header with animated gradient */}
       <div className="bg-gradient-to-r from-indigo-900 via-blue-800 to-indigo-800 p-8 relative overflow-hidden animate-gradient">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-20 animate-float"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-20 animate-float-reverse"></div>
-        </div>
-        <div className="max-w-7xl mx-auto relative">
-          <h1 className="text-4xl font-bold mb-3 text-white text-center animate-slideDown">Crew Management</h1>
-          <br></br>
-        </div>
-      </div>
+  <div className="absolute inset-0 opacity-20">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-20"
+         style={{ animation: 'float 15s ease-in-out infinite' }}></div>
+    <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-20"
+         style={{ animation: 'floatReverse 18s ease-in-out infinite' }}></div>
+  </div>
+  <div className="max-w-7xl mx-auto relative">
+    <h1 className="text-4xl font-bold mb-3 text-white text-center"
+        style={{ 
+          animation: 'fadeInDown 0.8s ease-out',
+          opacity: 1,
+          transform: 'translateY(0)'
+        }}>Crew Management</h1>
+    <br></br>
+  </div>
+</div>
+
+{/* Required CSS animations */}
+<style jsx>{`
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes floatReverse {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+`}</style>
 
       {/* Search form with animation */}
       <div className="max-w-7xl mx-auto -mt-8 px-4 sm:px-6 lg:px-8 relative z-10">
