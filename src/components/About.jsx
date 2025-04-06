@@ -4,8 +4,8 @@ import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-import Male from '../assets/Male.jpg'
-import Female from '../assets/Female.png'
+import Male from '../assets/male.jpg'
+import Female from '../assets/female.png'
 
 const About = () => {
   const [heroOffset, setHeroOffset] = useState(0);
