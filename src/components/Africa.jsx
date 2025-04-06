@@ -5,7 +5,7 @@ import Footer from './Footer';
 import Capetown from '../assets/capetown.jpeg';
 import Marrakech from '../assets/marrakech.jpg';
 import Zanzibar from '../assets/zanzibar.jpg';
-import Cairo from '../assets/cairo.webp';
+import Cairo from '../assets/Cairo.webp';
 import Serengeti from '../assets/serengeti.jpg';
 import VictoriaFalls from '../assets/victoriafalls.jpg';
 import Africa1 from '../assets/africa1.jpg';
