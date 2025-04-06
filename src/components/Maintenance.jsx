@@ -3,7 +3,7 @@ import { Shield, Wrench, AlertTriangle, CheckCircle, Clock, Calendar, Settings, 
 import { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import A320 from '../assets/A320.jpg';
+import A320 from '../assets/a320.jpg';
 import B737 from '../assets/boeing737.jpg';
 import A350 from '../assets/a350.jpg';
 import B787 from '../assets/boeing787.jpg';
