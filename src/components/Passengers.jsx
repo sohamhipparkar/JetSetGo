@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User, Users, UserPlus, UserMinus, CreditCard, Mail, Phone, Landmark, ShieldCheck, ChevronDown, ChevronUp, HelpCircle, CheckCircle, Calendar, Globe, ChevronRight, ChevronLeft } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 const Passengers = () => {
   const [passengers, setPassengers] = useState([
@@ -1364,12 +1365,14 @@ const Passengers = () => {
         Back to Payment
       </button>
       
+      <Link to='/confirmation'>
       <button
         className="confirm-button w-full sm:w-auto bg-gradient-to-r from-green-600 to-emerald-700 text-white py-3 px-8 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center justify-center"
       >
         Confirm and Pay ${flightDetails.price.total}
         <CheckCircle className="h-5 w-5 ml-2 icon-check" />
       </button>
+      </Link>
       
       <style jsx>{`
         .action-buttons {
