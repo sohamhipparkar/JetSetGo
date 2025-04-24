@@ -17,7 +17,6 @@ const Careers = () => {
     
     window.addEventListener('scroll', handleScroll);
     
-    // Job categories
     const jobCategories = [
       {
         title: "Flight Operations",

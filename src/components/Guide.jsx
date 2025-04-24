@@ -16,8 +16,7 @@ const Guide = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Booking steps
+
     const bookingSteps = [
       {
         title: "Search Flights",

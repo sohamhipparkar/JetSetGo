@@ -9,8 +9,7 @@ const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [expandedQuestions, setExpandedQuestions] = useState({});
-  
-  // FAQ data
+
   const faqCategories = [
     'all',
     'bookings',
@@ -95,8 +94,7 @@ const FAQ = () => {
       category: "baggage"
     },
   ];
-  
-  // Filter FAQs based on search and category
+
   const filteredFAQs = faqData.filter(faq => {
     const matchesSearch = !searchTerm || 
       faq.question.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -107,7 +105,6 @@ const FAQ = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Toggle question expansion
   const toggleQuestion = (id) => {
     setExpandedQuestions(prev => ({
       ...prev,

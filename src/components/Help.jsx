@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HelpCircle, Search, FileText, BookOpen, Globe, MessageSquare, Phone, Mail, Bookmark, AlertCircle, Star, ChevronDown, ChevronUp, ArrowRight, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { HelpCircle, Search, FileText, BookOpen, Globe, MessageSquare, Phone, Mail, Bookmark, AlertCircle, Star, ChevronDown, ChevronUp, ThumbsUp, ThumbsDown } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
@@ -24,7 +24,6 @@ const Help = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Handle search functionality here
     console.log("Searching for:", searchQuery);
   };
 
@@ -32,7 +31,6 @@ const Help = () => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  // Categories and article placeholders
   const helpCategories = [
     { id: 'bookings', name: 'Bookings & Reservations', icon: <BookOpen className="h-6 w-6" /> },
     { id: 'checkin', name: 'Check-in & Boarding', icon: <FileText className="h-6 w-6" /> },
@@ -70,7 +68,6 @@ const Help = () => {
     }
   ];
 
-  // Simulated featured article content
   const featuredArticleContent = {
     title: "Complete Guide to Online Check-in",
     category: "Check-in & Boarding",

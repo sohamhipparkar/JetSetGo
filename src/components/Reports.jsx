@@ -12,15 +12,12 @@ const Reports = () => {
   const [animateMetrics, setAnimateMetrics] = useState(false);
   const [animateTrips, setAnimateTrips] = useState(false);
 
-  // Animation triggers on component mount
   useEffect(() => {
-    // Staggered animations
     setTimeout(() => setAnimateMetrics(true), 300);
     setTimeout(() => setAnimateCharts(true), 600);
     setTimeout(() => setAnimateTrips(true), 900);
   }, []);
 
-  // Reset animations when changing tabs
   useEffect(() => {
     setAnimateMetrics(false);
     setAnimateCharts(false);
@@ -31,7 +28,6 @@ const Reports = () => {
     setTimeout(() => setAnimateTrips(true), 900);
   }, [activeTab]);
 
-  // Sample report data
   const travelMetrics = {
     totalSpent: 24850,
     totalTrips: 18,
@@ -41,7 +37,6 @@ const Reports = () => {
     upcomingTrips: 3
   };
 
-  // Sample expense data for charts
   const expensesByCategory = [
     { category: 'Flights', amount: 14200, percentage: 57 },
     { category: 'Hotels', amount: 6800, percentage: 27 },
@@ -58,7 +53,6 @@ const Reports = () => {
     { month: 'Jun', amount: 5750 }
   ];
 
-  // Sample recent trips data
   const recentTrips = [
     {
       id: 'T12345',

@@ -16,8 +16,7 @@ const Contact = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Animate offices appearance
+
     const offices = [
         {
         city: "Pune",
@@ -56,12 +55,10 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
     setFormStatus('submitting');
     
     setTimeout(() => {
       setFormStatus('success');
-      // Reset form after some time
       setTimeout(() => {
         setFormStatus(null);
         e.target.reset();

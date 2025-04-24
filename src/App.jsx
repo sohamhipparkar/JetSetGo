@@ -20,6 +20,8 @@ import Africa from "./components/Africa";
 import Careers from "./components/Careers";
 import Partners from "./components/Partners";
 import Press from "./components/Press";
+import Login from "./components/Login";
+import Confirmation from "./components/Confirmation";
 import Error from "./components/Error";
 
 function Root() {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
     children: [
     {
       path: "/",
+      element: <Login />,
+    },
+    {
+      path: "/home",
       element: <Dashboard />,
     },
     {
@@ -47,6 +53,10 @@ const router = createBrowserRouter([
     {
       path: "/passengers",
       element: <Passengers />,
+    },
+    {
+      path: "/confirmation",
+      element: <Confirmation />,
     },
     {
       path: "/bookings",

@@ -14,8 +14,7 @@ import America2 from '../assets/america2.jpg';
 const America = () => {
   const [heroOffset, setHeroOffset] = useState(0);
   const [visibleDestinations, setVisibleDestinations] = useState([]);
-  
-  // Sample Americas destinations data
+
   const destinations = [
     {
       id: 1,
@@ -82,8 +81,7 @@ const America = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Animate destinations appearance
+
     const timer = setTimeout(() => {
       setVisibleDestinations(destinations);
     }, 300);
@@ -108,7 +106,7 @@ const America = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Navbar />
-      
+
       {/* Hero header with animated gradient and floating elements */}
       <div className="bg-gradient-to-r from-red-900 via-amber-800 to-red-800 p-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ transform: `translateY(${heroOffset}px)` }}>

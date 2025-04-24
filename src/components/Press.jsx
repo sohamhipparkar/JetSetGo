@@ -16,8 +16,7 @@ const Press = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Press categories
+
     const pressCategories = [
       {
         title: "Press Releases",

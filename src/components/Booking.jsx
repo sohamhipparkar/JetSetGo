@@ -10,13 +10,11 @@ const Booking = () => {
   const [animated, setAnimated] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [searchFocus, setSearchFocus] = useState(false);
-  
-  // Animation trigger on component mount
+
   useEffect(() => {
     setAnimated(true);
   }, []);
-  
-  // Mock data for bookings
+
   const bookings = [
     {
       id: 'BK7823',
@@ -100,15 +98,13 @@ const Booking = () => {
     }
   ];
 
-  // Filter bookings based on active tab
   const filteredBookings = bookings.filter(booking => {
     if (activeTab === 'upcoming') return booking.status === 'confirmed';
     if (activeTab === 'completed') return booking.status === 'completed';
     if (activeTab === 'cancelled') return booking.status === 'cancelled';
-    return true; // 'all' tab
+    return true;
   });
   
-  // Sort bookings based on selected criteria
   const sortedBookings = [...filteredBookings].sort((a, b) => {
     const dateA = new Date(a.departureDate);
     const dateB = new Date(b.departureDate);
@@ -118,8 +114,7 @@ const Booking = () => {
     if (sortBy === 'destination') return a.arrivalCity.localeCompare(b.arrivalCity);
     return 0;
   });
-  
-  // Get status badge styling
+
   const getStatusBadge = (status) => {
     switch(status) {
       case 'confirmed':
@@ -153,7 +148,6 @@ const Booking = () => {
     }
   };
 
-  // Toggle booking details
   const toggleBookingDetails = (id) => {
     if (selectedBooking === id) {
       setSelectedBooking(null);

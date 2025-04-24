@@ -15,7 +15,6 @@ const Crew = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [memberHover, setMemberHover] = useState(null);
 
-  // Sample crew data
   const crewMembers = [
     { id: 1, name: 'Alex Johnson', role: 'Captain', status: 'On duty', availability: 95, skills: ['Navigation', 'Leadership', 'Emergency Response'], avatar: '👨‍✈️' },
     { id: 2, name: 'Samantha Chen', role: 'First Officer', status: 'On leave', availability: 0, skills: ['Navigation', 'Systems Operation', 'Communication'], avatar: '👩‍✈️' },
@@ -23,8 +22,7 @@ const Crew = () => {
     { id: 4, name: 'Elena Rodriguez', role: 'Medical Officer', status: 'Standby', availability: 65, skills: ['Emergency Medicine', 'Surgery', 'Psychology'], avatar: '👩‍⚕️' },
     { id: 5, name: 'James Lee', role: 'Security Officer', status: 'On duty', availability: 90, skills: ['Tactical', 'Investigation', 'Defense'], avatar: '👮‍♂️' }
   ];
-
-  // Simulate loading state
+  
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);

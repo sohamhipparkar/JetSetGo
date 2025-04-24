@@ -25,7 +25,6 @@ const Partners = () => {
     
     window.addEventListener('scroll', handleScroll);
     
-    // Partner categories
     const partnerCategories = [
       {
         title: "Airline Partners",

@@ -18,8 +18,7 @@ const About = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Animate team members appearance
+
     const teamMembers = [
       {
         name: "Prof. Rahul More",

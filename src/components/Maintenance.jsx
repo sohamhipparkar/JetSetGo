@@ -26,8 +26,7 @@ const Maintenance = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Aircraft data
+
     const aircraftData = [
       {
         id: "JG-A320-001",
@@ -121,7 +120,6 @@ const Maintenance = () => {
       },
     ];
     
-    // Upcoming maintenance data
     const maintenanceData = [
       {
         id: 1,
@@ -175,15 +173,12 @@ const Maintenance = () => {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Filter aircraft based on search term and filters
   const filteredAircraft = aircraft.filter(item => {
     const matchesSearch = item.id.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         item.model.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = selectedStatus === 'All' || item.status === selectedStatus;
     const matchesType = selectedType === 'All' || item.type === selectedType;
-    
-    // Filter based on active tab
+
     if (activeTab === 'alerts' && item.alerts === 0) return false;
     if (activeTab === 'maintenance' && item.status !== 'In Maintenance' && item.status !== 'Scheduled Maintenance') return false;
     if (activeTab === 'operational' && item.status !== 'Operational') return false;
@@ -191,7 +186,6 @@ const Maintenance = () => {
     return matchesSearch && matchesStatus && matchesType;
   });
 
-  // Get maintenance status color
   const getStatusColor = (status) => {
     switch(status) {
       case "Operational":
@@ -209,7 +203,6 @@ const Maintenance = () => {
     }
   };
 
-  // Get progress color
   const getProgressColor = (progress) => {
     if (progress < 25) return "bg-red-500";
     if (progress < 50) return "bg-amber-500";

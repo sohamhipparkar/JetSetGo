@@ -4,7 +4,6 @@ const Footer = () => {
   const [animated, setAnimated] = useState(false);
   
   useEffect(() => {
-    // Trigger animations after component mounts
     const timer = setTimeout(() => {
       setAnimated(true);
     }, 300);

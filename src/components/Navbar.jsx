@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center">
-            <Link to="/">
+            <Link to="/home">
               <div className={`flex-shrink-0 flex items-center transform transition-all duration-300 ${
                 scrolled ? "scale-95" : ""
               }`}>
@@ -77,11 +77,11 @@ const Navbar = () => {
             {/* Desktop Nav Links - with animated active tab indicator */}
             <div className="hidden md:ml-8 md:flex md:space-x-6">
               <a 
-                href="/" 
+                href="/home" 
                 onClick={(e) => {
                   e.preventDefault();
                   handleTabClick('dashboard');
-                  window.location.href = '/';
+                  window.location.href = '/home';
                 }}
                 className={`px-3 py-2 rounded-sm font-medium transition-all duration-300 ease-in-out relative ${
                   activeTab === 'dashboard' 
@@ -454,7 +454,6 @@ body {
 }
 `;
 
-// You need to add this style to your app
 const StylesComponent = () => {
   return <style>{customStyles}</style>;
 };

@@ -8,8 +8,7 @@ const Dashboard = () => {
   const [activePerformanceSlide, setActivePerformanceSlide] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [animatedStats, setAnimatedStats] = useState(false);
-  
-  // Mock data
+
   const flightStats = [
     { status: 'On Time', count: 238, percentage: 84, color: 'bg-emerald-500' },
     { status: 'Delayed', count: 36, percentage: 12, color: 'bg-amber-500' },

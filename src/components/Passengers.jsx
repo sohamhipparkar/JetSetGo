@@ -81,8 +81,7 @@ const Passengers = () => {
       setActiveSection('payment-details');
     }
   };
-  
-  // Flight details (mockup)
+
   const flightDetails = {
     outbound: {
       airline: 'JetSetGo Airways',

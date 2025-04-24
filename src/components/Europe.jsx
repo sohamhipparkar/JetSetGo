@@ -14,8 +14,7 @@ import Europe2 from '../assets/europe2.jpg';
 const Europe = () => {
   const [heroOffset, setHeroOffset] = useState(0);
   const [visibleDestinations, setVisibleDestinations] = useState([]);
-  
-  // Sample European destinations data
+
   const destinations = [
     {
       id: 1,
@@ -82,8 +81,7 @@ const Europe = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Animate destinations appearance
+
     const timer = setTimeout(() => {
       setVisibleDestinations(destinations);
     }, 300);

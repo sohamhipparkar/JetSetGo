@@ -13,7 +13,6 @@ const Flights = () => {
   const [expandedFlightId, setExpandedFlightId] = useState(null);
   const [hoverCard, setHoverCard] = useState(null);
 
-  // Mock data for flights
   const flights = [
     {
       id: 'FL1234',
@@ -77,7 +76,6 @@ const Flights = () => {
     }
   ];
 
-  // Sort flights based on selected criteria
   const sortedFlights = [...flights].sort((a, b) => {
     if (sortBy === 'price') return a.price - b.price;
     if (sortBy === 'duration') return a.duration.localeCompare(b.duration);
@@ -85,12 +83,9 @@ const Flights = () => {
     return 0;
   });
 
-  // Animation for filtering flights
   useEffect(() => {
-    // First clear all flights with animation effect
     setVisibleFlights([]);
     
-    // Then progressively add flights with staggered delay
     const filtered = sortedFlights.filter(flight => 
       activeTab === 'all' || (activeTab === 'nonstop' && flight.stops === 0)
     );
@@ -102,7 +97,6 @@ const Flights = () => {
     });
   }, [sortBy, activeTab]);
 
-  // Search animation effect
   const handleSearch = () => {
     setSearchAnimated(true);
     setVisibleFlights([]);
@@ -117,7 +111,6 @@ const Flights = () => {
     }, 800);
   };
 
-  // Animation for floating elements on the hero section
   const [heroOffset, setHeroOffset] = useState(0);
   useEffect(() => {
     const handleScroll = () => {
@@ -128,7 +121,6 @@ const Flights = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Toggle flight details
   const toggleFlightDetails = (id) => {
     setExpandedFlightId(expandedFlightId === id ? null : id);
   };

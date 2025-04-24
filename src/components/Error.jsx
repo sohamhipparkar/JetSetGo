@@ -16,13 +16,11 @@ const Error = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    
-    // Show plane after a delay
+
     setTimeout(() => {
       setShowPlane(true);
     }, 800);
-    
-    // Animate plane path
+
     const planeInterval = setInterval(() => {
       setPlanePath((prev) => {
         if (prev >= 100) return 0;
@@ -36,7 +34,6 @@ const Error = () => {
     };
   }, []);
 
-  // Calculate plane position based on path
   const getPlanePosition = () => {
     const x = Math.sin(planePath * 0.05) * 40;
     const y = Math.sin(planePath * 0.03) * 20;
