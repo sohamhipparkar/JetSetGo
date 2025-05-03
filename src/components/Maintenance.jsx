@@ -19,6 +19,7 @@ const Maintenance = () => {
   const [selectedType, setSelectedType] = useState('All');
   const [aircraft, setAircraft] = useState([]);
   const [upcomingMaintenance, setUpcomingMaintenance] = useState([]);
+  const [editStatusId, setEditStatusId] = useState(null); // Track which aircraft's status is being edited
 
   useEffect(() => {
     const handleScroll = () => {
@@ -173,6 +174,7 @@ const Maintenance = () => {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const filteredAircraft = aircraft.filter(item => {
     const matchesSearch = item.id.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         item.model.toLowerCase().includes(searchTerm.toLowerCase());
@@ -210,9 +212,44 @@ const Maintenance = () => {
     return "bg-green-500";
   };
 
+  // Function to handle status update
+  const handleStatusUpdate = (aircraftId, newStatus) => {
+    setAircraft(prevAircraft => 
+      prevAircraft.map(item => 
+        item.id === aircraftId ? { ...item, status: newStatus } : item
+      )
+    );
+    
+    // Update the maintenance schedule if needed
+    if (newStatus === "In Maintenance") {
+      // Check if there's already a maintenance entry
+      const existingEntry = upcomingMaintenance.find(
+        entry => entry.aircraftId === aircraftId && 
+                (entry.status === "Scheduled" || entry.status === "In Progress")
+      );
+      
+      if (existingEntry) {
+        // Update existing entry
+        setUpcomingMaintenance(prevMaintenance => 
+          prevMaintenance.map(entry => 
+            entry.id === existingEntry.id ? { ...entry, status: "In Progress" } : entry
+          )
+        );
+      }
+    }
+    
+    // Close the dropdown
+    setEditStatusId(null);
+  };
+
+  // Function to toggle status edit dropdown
+  const toggleStatusEdit = (aircraftId) => {
+    setEditStatusId(editStatusId === aircraftId ? null : aircraftId);
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
-        <Navbar />
+      <Navbar />
       {/* Hero header with animated gradient */}
       <div className="bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-800 p-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ transform: `translateY(${heroOffset}px)` }}>
@@ -368,8 +405,47 @@ const Maintenance = () => {
                     <h3 className="font-bold text-gray-800">{item.id}</h3>
                     <div className="text-sm text-gray-500">{item.model} ({item.type})</div>
                   </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(item.status)}`}>
-                    {item.status}
+                  
+                  {/* Status display with edit option */}
+                  <div className="relative">
+                    <div 
+                      className={`px-3 py-1 rounded-full text-xs font-medium cursor-pointer ${getStatusColor(item.status)} flex items-center`}
+                      onClick={() => toggleStatusEdit(item.id)}
+                    >
+                      {item.status}
+                      <ChevronDown className="h-3 w-3 ml-1" />
+                    </div>
+                    
+                    {/* Status edit dropdown */}
+                    {editStatusId === item.id && (
+                      <div className="absolute right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-20 p-2">
+                        <div className="text-sm font-medium text-gray-700 mb-2 px-2">Update Status:</div>
+                        <button 
+                          className="w-full text-left px-2 py-1 text-sm hover:bg-green-50 text-green-600 rounded"
+                          onClick={() => handleStatusUpdate(item.id, "Operational")}
+                        >
+                          Operational
+                        </button>
+                        <button 
+                          className="w-full text-left px-2 py-1 text-sm hover:bg-amber-50 text-amber-600 rounded"
+                          onClick={() => handleStatusUpdate(item.id, "In Maintenance")}
+                        >
+                          In Maintenance
+                        </button>
+                        <button 
+                          className="w-full text-left px-2 py-1 text-sm hover:bg-blue-50 text-blue-600 rounded"
+                          onClick={() => handleStatusUpdate(item.id, "Scheduled Maintenance")}
+                        >
+                          Scheduled Maintenance
+                        </button>
+                        <button 
+                          className="w-full text-left px-2 py-1 text-sm hover:bg-red-50 text-red-600 rounded"
+                          onClick={() => handleStatusUpdate(item.id, "Grounded")}
+                        >
+                          Grounded
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 
