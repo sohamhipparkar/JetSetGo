@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Lock, EyeOff, Eye, User, ArrowRight, LogIn, Plane } from 'lucide-react';
+import { Mail, Lock, EyeOff, Eye, User, ArrowRight, LogIn, Plane, Info } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -11,10 +11,17 @@ const Login = () => {
   const [flyingPlane, setFlyingPlane] = useState(false);
   const [error, setError] = useState('');
   const [animateForm, setAnimateForm] = useState(false);
+  const [showTestCredentials, setShowTestCredentials] = useState(true);
   
   const navigate = useNavigate();
 
   const [scrollY, setScrollY] = useState(0);
+  
+  // Test credentials
+  const testCredentials = {
+    email: 'admin@jetsetgo.com',
+    password: 'JetSetGo@123'
+  };
   
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +44,7 @@ const Login = () => {
     setError('');
 
     setTimeout(() => {
-      if (email === 'admin@jetsetgo.com' && password === 'JetSetGo@123') {
+      if (email === testCredentials.email && password === testCredentials.password) {
         navigate('/home');
       } else {
         setError('Invalid email or password');
@@ -45,6 +52,11 @@ const Login = () => {
         setFlyingPlane(false);
       }
     }, 2000);
+  };
+
+  const fillTestCredentials = () => {
+    setEmail(testCredentials.email);
+    setPassword(testCredentials.password);
   };
 
   return (
@@ -130,6 +142,32 @@ const Login = () => {
             {error && (
               <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm animate-shake">
                 {error}
+              </div>
+            )}
+            
+            {/* Test Credentials Info Box */}
+            {showTestCredentials && (
+              <div className={`mb-6 p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-lg text-sm transition-all duration-700 delay-200 ${animateForm ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="flex items-start">
+                  <Info className="h-5 w-5 mr-2 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium mb-1">Test Credentials</p>
+                    <p><span className="font-medium">Email:</span> {testCredentials.email}</p>
+                    <p><span className="font-medium">Password:</span> {testCredentials.password}</p>
+                    <button 
+                      onClick={fillTestCredentials}
+                      className="mt-2 text-xs bg-blue-600 text-white py-1 px-3 rounded-md hover:bg-blue-700 transition-colors duration-300"
+                    >
+                      Use Test Credentials
+                    </button>
+                    <button 
+                      onClick={() => setShowTestCredentials(false)}
+                      className="mt-2 ml-2 text-xs bg-gray-200 text-gray-700 py-1 px-3 rounded-md hover:bg-gray-300 transition-colors duration-300"
+                    >
+                      Hide
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
             
@@ -235,6 +273,19 @@ const Login = () => {
                   />
                 </button>
               </div>
+
+              {/* Show credentials button (when hidden) */}
+              {!showTestCredentials && (
+                <div className="text-center mt-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowTestCredentials(true)}
+                    className="text-xs text-indigo-600 hover:text-indigo-800 transition-colors duration-300"
+                  >
+                    Show test credentials
+                  </button>
+                </div>
+              )}
 
               {/* Social login section */}
               <div className={`relative mt-8 mb-4 transition-all duration-700 delay-1000 ${animateForm ? 'opacity-100' : 'opacity-0'}`}>
@@ -361,7 +412,11 @@ const Login = () => {
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-600 mb-4">{feature.description}</p>
+                <a href="#" className="text-sm font-medium text-indigo-600 flex items-center hover:text-indigo-800 transition-colors duration-300">
+                  Learn more
+                  <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
               </div>
             ))}
           </div>
@@ -369,33 +424,74 @@ const Login = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-gray-400 text-sm">© 2025 JetSetGo. All rights reserved.</p>
-            <div className="mt-4 flex justify-center space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Contact Us</a>
+      <footer className="bg-gray-50 py-12 border-t border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-1 md:col-span-2">
+              <div className="text-indigo-600 font-bold text-2xl mb-4">JetSetGo</div>
+              <p className="text-gray-600 mb-4 max-w-md">Your ultimate travel companion for seamless journeys and unforgettable experiences around the globe.</p>
+              <div className="flex space-x-4">
+                {['twitter', 'facebook', 'instagram', 'linkedin'].map((social) => (
+                  <a key={social} href="#" className="text-gray-400 hover:text-indigo-600 transition-colors duration-300">
+                    <span className="sr-only">{social}</span>
+                    <div className="w-6 h-6">
+                      {/* Social icons would go here */}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            {[
+              {
+                title: "Company",
+                links: ["About", "Careers", "News", "Partners"]
+              },
+              {
+                title: "Support",
+                links: ["Help Center", "Contact Us", "FAQ", "Community"]
+              },
+              {
+                title: "Legal",
+                links: ["Privacy", "Terms", "Cookies", "Licenses"]
+              }
+            ].map((column, index) => (
+              <div key={index}>
+                <h3 className="text-gray-900 font-semibold mb-4">{column.title}</h3>
+                <ul className="space-y-2">
+                  {column.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors duration-300">
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-500 text-sm">© 2025 JetSetGo, Inc. All rights reserved.</p>
+            <div className="mt-4 md:mt-0 flex space-x-6">
+              <a href="#" className="text-gray-500 hover:text-indigo-600 text-sm transition-colors duration-300">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-500 hover:text-indigo-600 text-sm transition-colors duration-300">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-500 hover:text-indigo-600 text-sm transition-colors duration-300">
+                Cookie Settings
+              </a>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* CSS animations */}
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-        
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        
+      {/* Add the global CSS animation keyframes */}
+      <style jsx global>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
+          from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
         
@@ -410,7 +506,7 @@ const Login = () => {
         }
         
         .animate-shake {
-          animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+          animation: shake 0.5s ease-in-out;
         }
       `}</style>
     </div>
