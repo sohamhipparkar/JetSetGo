@@ -166,24 +166,38 @@ const Press = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Navbar />
-      {/* Hero header with animated gradient and floating elements */}
+      {/* ----------------- Hero header with animated gradient and floating elements -----------------*/}
       <div className="bg-gradient-to-r from-indigo-900 via-blue-800 to-indigo-800 p-12 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20" style={{ transform: `translateY(${heroOffset}px)` }}>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-20" 
-               style={{ animation: 'float 15s ease-in-out infinite' }}></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-20"
-               style={{ animation: 'floatReverse 18s ease-in-out infinite' }}></div>
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{ transform: `translateY(${heroOffset}px)` }}
+        >
+          <div
+            className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-20"
+            style={{ animation: "float 15s ease-in-out infinite" }}
+          ></div>
+          <div
+            className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-20"
+            style={{ animation: "floatReverse 18s ease-in-out infinite" }}
+          ></div>
         </div>
         <div className="max-w-7xl mx-auto relative text-center">
-          <h1 className="text-5xl font-bold mb-6 text-white" 
-              style={{ 
-                animation: 'fadeInDown 0.8s ease-out',
-                opacity: 1,
-                transform: 'translateY(0)'
-              }}>Press & Media</h1>
-          <p className="text-indigo-100 max-w-3xl mx-auto text-lg"
-             style={{ animation: 'fadeInUp 1s ease-out' }}>
-            Latest news, press releases, and media resources from JetSetGo - keeping you informed about our innovations and achievements.
+          <h1
+            className="text-5xl font-bold mb-6 text-white"
+            style={{
+              animation: "fadeInDown 0.8s ease-out",
+              opacity: 1,
+              transform: "translateY(0)",
+            }}
+          >
+            Press & Media
+          </h1>
+          <p
+            className="text-indigo-100 max-w-3xl mx-auto text-lg"
+            style={{ animation: "fadeInUp 1s ease-out" }}
+          >
+            Latest news, press releases, and media resources from JetSetGo -
+            keeping you informed about our innovations and achievements.
           </p>
           <br />
         </div>
@@ -192,77 +206,97 @@ const Press = () => {
       {/* Main content section */}
       <div className="max-w-7xl mx-auto -mt-8 px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Press Overview Card */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 0.8s ease-out',
+          style={{
+            animation: "fadeInUp 0.8s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
-          <h2 className="text-3xl font-bold text-indigo-900 mb-6">Press Overview</h2>
+          <h2 className="text-3xl font-bold text-indigo-900 mb-6">
+            Press Overview
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                JetSetGo is constantly evolving and expanding as a global airline. Our press section provides
-                the latest updates on our company developments, achievements, and industry innovations.
+                JetSetGo is constantly evolving and expanding as a global
+                airline. Our press section provides the latest updates on our
+                company developments, achievements, and industry innovations.
               </p>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                We're committed to transparency and maintaining strong relationships with media partners
-                around the world. Our press room offers comprehensive resources for journalists, bloggers,
+                We're committed to transparency and maintaining strong
+                relationships with media partners around the world. Our press
+                room offers comprehensive resources for journalists, bloggers,
                 and publications looking to cover our story.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From fleet expansions and new routes to sustainability initiatives and technological innovations,
-                keep up with everything happening at JetSetGo through our regularly updated press materials.
+                From fleet expansions and new routes to sustainability
+                initiatives and technological innovations, keep up with
+                everything happening at JetSetGo through our regularly updated
+                press materials.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-indigo-50 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-indigo-100 transition-colors">
-                <div className="text-4xl font-bold text-indigo-600 mb-1">120+</div>
+                <div className="text-4xl font-bold text-indigo-600 mb-1">
+                  120+
+                </div>
                 <div className="text-gray-600">Press Releases</div>
               </div>
               <div className="bg-indigo-50 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-indigo-100 transition-colors">
-                <div className="text-4xl font-bold text-indigo-600 mb-1">85+</div>
+                <div className="text-4xl font-bold text-indigo-600 mb-1">
+                  85+
+                </div>
                 <div className="text-gray-600">Media Mentions</div>
               </div>
               <div className="bg-indigo-50 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-indigo-100 transition-colors">
-                <div className="text-4xl font-bold text-indigo-600 mb-1">25+</div>
+                <div className="text-4xl font-bold text-indigo-600 mb-1">
+                  25+
+                </div>
                 <div className="text-gray-600">Awards</div>
               </div>
               <div className="bg-indigo-50 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-indigo-100 transition-colors">
-                <div className="text-4xl font-bold text-indigo-600 mb-1">12</div>
+                <div className="text-4xl font-bold text-indigo-600 mb-1">
+                  12
+                </div>
                 <div className="text-gray-600">Media Kits</div>
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Press Categories */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 1s ease-out',
+          style={{
+            animation: "fadeInUp 1s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
-          <h2 className="text-3xl font-bold text-indigo-900 mb-8">Press Categories</h2>
-          
+          <h2 className="text-3xl font-bold text-indigo-900 mb-8">
+            Press Categories
+          </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visiblePressCategories.map((category, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-indigo-50 rounded-lg p-6 hover:shadow-md transition-shadow cursor-pointer"
-                style={{ animation: 'fadeInUp 0.6s ease-out' }}
+                style={{ animation: "fadeInUp 0.6s ease-out" }}
                 onClick={() => setSelectedCategory(category.title)}
               >
                 {category.icon}
-                <h3 className="font-bold text-xl text-gray-800 mb-2">{category.title}</h3>
+                <h3 className="font-bold text-xl text-gray-800 mb-2">
+                  {category.title}
+                </h3>
                 <p className="text-gray-700 mb-4">{category.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-indigo-600 font-medium">{category.count} items</span>
-                  <button 
+                  <span className="text-indigo-600 font-medium">
+                    {category.count} items
+                  </span>
+                  <button
                     className="text-sm font-medium text-white bg-indigo-600 px-3 py-1 rounded-md hover:bg-indigo-700 transition-colors"
                     onClick={() => setSelectedCategory(category.title)}
                   >
@@ -273,38 +307,40 @@ const Press = () => {
             ))}
           </div>
         </div>
-        
+
         {/* Latest Press Releases */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 1.2s ease-out',
+          style={{
+            animation: "fadeInUp 1.2s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
-          <h2 className="text-3xl font-bold text-indigo-900 mb-6">Latest News</h2>
-          
+          <h2 className="text-3xl font-bold text-indigo-900 mb-6">
+            Latest News
+          </h2>
+
           <div className="mb-6">
             <div className="flex flex-wrap gap-2">
-              <button 
-                onClick={() => setSelectedCategory('all')}
+              <button
+                onClick={() => setSelectedCategory("all")}
                 className={`px-4 py-2 rounded-md transition-colors ${
-                  selectedCategory === 'all' 
-                    ? 'bg-indigo-600 text-white' 
-                    : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
+                  selectedCategory === "all"
+                    ? "bg-indigo-600 text-white"
+                    : "bg-indigo-100 text-indigo-700 hover:bg-indigo-200"
                 }`}
               >
                 All News
               </button>
               {visiblePressCategories.map((category, index) => (
-                <button 
+                <button
                   key={index}
                   onClick={() => setSelectedCategory(category.title)}
                   className={`px-4 py-2 rounded-md transition-colors ${
-                    selectedCategory === category.title 
-                      ? 'bg-indigo-600 text-white' 
-                      : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
+                    selectedCategory === category.title
+                      ? "bg-indigo-600 text-white"
+                      : "bg-indigo-100 text-indigo-700 hover:bg-indigo-200"
                   }`}
                 >
                   {category.title}
@@ -312,23 +348,28 @@ const Press = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredPressReleases.map((press) => (
-              <div 
+              <div
                 key={press.id}
-                className={`border ${press.featured ? 'border-indigo-200 bg-indigo-50' : 'border-gray-200 bg-white'} rounded-lg p-6 hover:shadow-md transition-all hover:border-indigo-300`}
-                style={{ animation: 'fadeInLeft 0.6s ease-out' }}
+                className={`border ${press.featured ? "border-indigo-200 bg-indigo-50" : "border-gray-200 bg-white"} rounded-lg p-6 hover:shadow-md transition-all hover:border-indigo-300`}
+                style={{ animation: "fadeInLeft 0.6s ease-out" }}
               >
-
                 <div className="flex justify-center mb-3">
                   <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-md text-xs font-medium">
                     {press.category}
                   </span>
                 </div>
-                <h3 className="font-bold text-lg text-center text-indigo-900 mb-2">{press.title}</h3>
-                <p className="text-gray-500 text-center text-xs mb-3">{press.date}</p>
-                <p className="text-gray-600 text-center text-sm">{press.summary}</p>
+                <h3 className="font-bold text-lg text-center text-indigo-900 mb-2">
+                  {press.title}
+                </h3>
+                <p className="text-gray-500 text-center text-xs mb-3">
+                  {press.date}
+                </p>
+                <p className="text-gray-600 text-center text-sm">
+                  {press.summary}
+                </p>
                 <div className="mt-4 flex justify-center">
                   <button className="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
                     Read More
@@ -344,54 +385,65 @@ const Press = () => {
               </div>
             ))}
           </div>
-          
+
           {filteredPressReleases.length === 0 && (
             <div className="text-center p-8 bg-gray-50 rounded-lg">
-              <p className="text-gray-600">No press releases currently available in this category. Please check back later.</p>
+              <p className="text-gray-600">
+                No press releases currently available in this category. Please
+                check back later.
+              </p>
             </div>
           )}
         </div>
-        
+
         {/* Media Mentions */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 1.4s ease-out',
+          style={{
+            animation: "fadeInUp 1.4s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-indigo-900">Media Mentions</h2>
-            <button 
+            <h2 className="text-3xl font-bold text-indigo-900">
+              Media Mentions
+            </h2>
+            <button
               onClick={() => setIsPressReleasesOpen(!isPressReleasesOpen)}
               className="flex items-center text-indigo-600 font-medium text-sm hover:text-indigo-800 transition-colors duration-300"
             >
               {isPressReleasesOpen ? (
-                <>Hide Mentions <ChevronUp className="ml-1 h-4 w-4" /></>
+                <>
+                  Hide Mentions <ChevronUp className="ml-1 h-4 w-4" />
+                </>
               ) : (
-                <>Show Mentions <ChevronDown className="ml-1 h-4 w-4" /></>
+                <>
+                  Show Mentions <ChevronDown className="ml-1 h-4 w-4" />
+                </>
               )}
             </button>
           </div>
-          
-          <div 
+
+          <div
             className="overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ 
-              maxHeight: isPressReleasesOpen ? '800px' : '0',
+            style={{
+              maxHeight: isPressReleasesOpen ? "800px" : "0",
               opacity: isPressReleasesOpen ? 1 : 0,
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {mediaMentions.map((mention) => (
-                <div 
+                <div
                   key={mention.id}
                   className="bg-indigo-50 rounded-lg p-6 border border-indigo-100 hover:shadow-md transition-shadow"
                 >
                   <div className="text-indigo-600 text-4xl mb-4">"</div>
                   <p className="text-gray-700 italic mb-6">{mention.quote}</p>
                   <div className="mt-auto">
-                    <div className="font-semibold text-indigo-900">{mention.source}</div>
+                    <div className="font-semibold text-indigo-900">
+                      {mention.source}
+                    </div>
                     <div className="text-gray-600 text-sm">{mention.date}</div>
                   </div>
                 </div>
@@ -399,14 +451,14 @@ const Press = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Media Contact */}
-        <div 
+        <div
           className="bg-gradient-to-r from-indigo-800 to-blue-700 rounded-xl shadow-xl p-8 mb-12 text-center"
-          style={{ 
-            animation: 'fadeInUp 1.6s ease-out',
+          style={{
+            animation: "fadeInUp 1.6s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
           <div className="flex justify-center mb-6">
@@ -414,8 +466,9 @@ const Press = () => {
           </div>
           <h2 className="text-3xl font-bold text-white mb-4">Media Contact</h2>
           <p className="text-indigo-100 max-w-3xl mx-auto mb-8">
-            Looking for more information or want to arrange an interview? Our media relations team is ready to assist you.
-            We respond to all media inquiries within 24 hours.
+            Looking for more information or want to arrange an interview? Our
+            media relations team is ready to assist you. We respond to all media
+            inquiries within 24 hours.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button className="bg-white text-indigo-700 py-3 px-8 rounded-lg font-semibold hover:bg-indigo-50 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">

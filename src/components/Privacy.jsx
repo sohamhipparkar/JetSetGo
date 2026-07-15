@@ -13,6 +13,7 @@ import {
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
+//Privacy highlights 
 const privacyHighlights = [
   {
     icon: <ShieldCheck className="h-6 w-6" />,

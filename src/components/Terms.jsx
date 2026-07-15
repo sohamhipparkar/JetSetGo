@@ -40,6 +40,7 @@ const termsHighlights = [
   },
 ];
 
+//Terms Section Content
 const termsSections = [
   {
     title: "Acceptance of terms",
