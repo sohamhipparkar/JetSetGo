@@ -82,37 +82,52 @@ const Help = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Navbar />
-      {/* Hero header with animated gradient and floating elements */}
+      {/* ----------------- Hero header with animated gradient and floating elements -----------------*/}
       <div className="bg-gradient-to-r from-indigo-900 via-blue-800 to-indigo-800 p-12 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20" style={{ transform: `translateY(${heroOffset}px)` }}>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-20" 
-               style={{ animation: 'float 15s ease-in-out infinite' }}></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-20"
-               style={{ animation: 'floatReverse 18s ease-in-out infinite' }}></div>
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{ transform: `translateY(${heroOffset}px)` }}
+        >
+          <div
+            className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-20"
+            style={{ animation: "float 15s ease-in-out infinite" }}
+          ></div>
+          <div
+            className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-20"
+            style={{ animation: "floatReverse 18s ease-in-out infinite" }}
+          ></div>
         </div>
         <div className="max-w-7xl mx-auto relative text-center">
-          <h1 className="text-5xl font-bold mb-6 text-white" 
-              style={{ 
-                animation: 'fadeInDown 0.8s ease-out',
-                opacity: 1,
-                transform: 'translateY(0)'
-              }}>Help Center</h1>
-          <p className="text-indigo-100 max-w-3xl mx-auto text-lg"
-             style={{ animation: 'fadeInUp 1s ease-out' }}>
+          <h1
+            className="text-5xl font-bold mb-6 text-white"
+            style={{
+              animation: "fadeInDown 0.8s ease-out",
+              opacity: 1,
+              transform: "translateY(0)",
+            }}
+          >
+            Help Center
+          </h1>
+          <p
+            className="text-indigo-100 max-w-3xl mx-auto text-lg"
+            style={{ animation: "fadeInUp 1s ease-out" }}
+          >
             Find guides, tutorials, and answers to all your travel questions
           </p>
-          <div className="mt-8 max-w-2xl mx-auto"
-               style={{ animation: 'fadeInUp 1.2s ease-out' }}>
+          <div
+            className="mt-8 max-w-2xl mx-auto"
+            style={{ animation: "fadeInUp 1.2s ease-out" }}
+          >
             <form onSubmit={handleSearch} className="flex">
-              <input 
-                type="text" 
-                placeholder="Search the knowledge base..." 
+              <input
+                type="text"
+                placeholder="Search the knowledge base..."
                 className="flex-grow px-5 py-4 rounded-l-lg border-0 focus:ring-2 focus:ring-indigo-400"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 rounded-r-lg flex items-center justify-center transition-colors duration-300"
               >
                 <Search className="h-5 w-5" />
@@ -125,177 +140,224 @@ const Help = () => {
       {/* Main content section */}
       <div className="max-w-7xl mx-auto -mt-8 px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Browse by Category */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 0.8s ease-out',
+          style={{
+            animation: "fadeInUp 0.8s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-indigo-900">Browse by Category</h2>
-            <button 
+            <h2 className="text-3xl font-bold text-indigo-900">
+              Browse by Category
+            </h2>
+            <button
               onClick={() => setCategoriesExpanded(!categoriesExpanded)}
               className="flex items-center text-indigo-600 font-medium text-sm hover:text-indigo-800 transition-colors duration-300"
             >
-              {categoriesExpanded ? 'Hide Categories' : 'Show Categories'}
-              {categoriesExpanded ? <ChevronUp className="ml-1 h-4 w-4" /> : <ChevronDown className="ml-1 h-4 w-4" />}
+              {categoriesExpanded ? "Hide Categories" : "Show Categories"}
+              {categoriesExpanded ? (
+                <ChevronUp className="ml-1 h-4 w-4" />
+              ) : (
+                <ChevronDown className="ml-1 h-4 w-4" />
+              )}
             </button>
           </div>
-          
-          <div 
+
+          <div
             className="overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ 
-              maxHeight: categoriesExpanded ? '500px' : '0',
+            style={{
+              maxHeight: categoriesExpanded ? "500px" : "0",
               opacity: categoriesExpanded ? 1 : 0,
             }}
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-2">
-              <button 
-                onClick={() => setActiveCategory('all')}
+              <button
+                onClick={() => setActiveCategory("all")}
                 className={`flex flex-col items-center p-4 rounded-lg transition-all ${
-                  activeCategory === 'all' ? 'bg-indigo-100 text-indigo-800' : 'bg-gray-50 hover:bg-gray-100'
+                  activeCategory === "all"
+                    ? "bg-indigo-100 text-indigo-800"
+                    : "bg-gray-50 hover:bg-gray-100"
                 }`}
               >
-                <HelpCircle className={`h-10 w-10 mb-2 ${activeCategory === 'all' ? 'text-indigo-600' : 'text-gray-500'}`} />
+                <HelpCircle
+                  className={`h-10 w-10 mb-2 ${activeCategory === "all" ? "text-indigo-600" : "text-gray-500"}`}
+                />
                 <span className="font-medium text-center">All Topics</span>
               </button>
-              
+
               {helpCategories.map((category) => (
-                <button 
+                <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={`flex flex-col items-center p-4 rounded-lg transition-all ${
-                    activeCategory === category.id ? 'bg-indigo-100 text-indigo-800' : 'bg-gray-50 hover:bg-gray-100'
+                    activeCategory === category.id
+                      ? "bg-indigo-100 text-indigo-800"
+                      : "bg-gray-50 hover:bg-gray-100"
                   }`}
                 >
-                  <div className={`h-10 w-10 mb-2 ${activeCategory === category.id ? 'text-indigo-600' : 'text-gray-500'}`}>
+                  <div
+                    className={`h-10 w-10 mb-2 ${activeCategory === category.id ? "text-indigo-600" : "text-gray-500"}`}
+                  >
                     {category.icon}
                   </div>
-                  <span className="font-medium text-center">{category.name}</span>
+                  <span className="font-medium text-center">
+                    {category.name}
+                  </span>
                 </button>
               ))}
             </div>
           </div>
         </div>
-        
+
         {/* Popular Articles */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 1.2s ease-out',
+          style={{
+            animation: "fadeInUp 1.2s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-indigo-900">Popular Articles</h2>
-            <button 
+            <h2 className="text-3xl font-bold text-indigo-900">
+              Popular Articles
+            </h2>
+            <button
               onClick={() => setPopularExpanded(!popularExpanded)}
               className="flex items-center text-indigo-600 font-medium text-sm hover:text-indigo-800 transition-colors duration-300"
             >
-              {popularExpanded ? 'Hide Articles' : 'Show Articles'}
-              {popularExpanded ? <ChevronUp className="ml-1 h-4 w-4" /> : <ChevronDown className="ml-1 h-4 w-4" />}
+              {popularExpanded ? "Hide Articles" : "Show Articles"}
+              {popularExpanded ? (
+                <ChevronUp className="ml-1 h-4 w-4" />
+              ) : (
+                <ChevronDown className="ml-1 h-4 w-4" />
+              )}
             </button>
           </div>
-          
-          <div 
+
+          <div
             className="overflow-hidden transition-all duration-500 ease-in-out"
-            style={{ 
-              maxHeight: popularExpanded ? '800px' : '0',
+            style={{
+              maxHeight: popularExpanded ? "800px" : "0",
               opacity: popularExpanded ? 1 : 0,
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {popularArticles
-                .filter(article => activeCategory === 'all' || article.category === activeCategory)
+                .filter(
+                  (article) =>
+                    activeCategory === "all" ||
+                    article.category === activeCategory,
+                )
                 .map((article) => (
-                <Link 
-                  key={article.id}
-                  to={`/help-center/article/${article.id}`}
-                  className="bg-gray-50 hover:bg-indigo-50 rounded-lg p-6 transition-all duration-300 hover:shadow-md border border-gray-100 group"
-                  style={{ animation: 'fadeInLeft 0.6s ease-out' }}
-                >
-                  <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-indigo-700 transition-colors">{article.title}</h3>
-                  <div className="flex items-center text-gray-500 text-sm">
-                    <FileText className="h-4 w-4 mr-1" />
-                    <span>Article</span>
-                    <span className="mx-2">•</span>
-                    <span>{article.views.toLocaleString()} views</span>
-                  </div>
-                </Link>
-              ))}
+                  <Link
+                    key={article.id}
+                    to={`/help-center/article/${article.id}`}
+                    className="bg-gray-50 hover:bg-indigo-50 rounded-lg p-6 transition-all duration-300 hover:shadow-md border border-gray-100 group"
+                    style={{ animation: "fadeInLeft 0.6s ease-out" }}
+                  >
+                    <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-indigo-700 transition-colors">
+                      {article.title}
+                    </h3>
+                    <div className="flex items-center text-gray-500 text-sm">
+                      <FileText className="h-4 w-4 mr-1" />
+                      <span>Article</span>
+                      <span className="mx-2">•</span>
+                      <span>{article.views.toLocaleString()} views</span>
+                    </div>
+                  </Link>
+                ))}
             </div>
-            
-            {activeCategory !== 'all' && popularArticles.filter(article => article.category === activeCategory).length === 0 && (
-              <div className="text-center py-8 text-gray-500">
-                No articles found in this category. Try selecting "All Topics" to see all articles.
-              </div>
-            )}
+
+            {activeCategory !== "all" &&
+              popularArticles.filter(
+                (article) => article.category === activeCategory,
+              ).length === 0 && (
+                <div className="text-center py-8 text-gray-500">
+                  No articles found in this category. Try selecting "All Topics"
+                  to see all articles.
+                </div>
+              )}
           </div>
         </div>
-        
+
         {/* Featured Article Preview */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 1.4s ease-out',
+          style={{
+            animation: "fadeInUp 1.4s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
           <div className="flex items-center mb-4">
-            <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">Featured Article</span>
+            <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">
+              Featured Article
+            </span>
             <span className="mx-2 text-gray-400">•</span>
-            <span className="text-gray-500 text-sm">{featuredArticleContent.category}</span>
+            <span className="text-gray-500 text-sm">
+              {featuredArticleContent.category}
+            </span>
             <span className="mx-2 text-gray-400">•</span>
-            <span className="text-gray-500 text-sm">Updated: {featuredArticleContent.lastUpdated}</span>
+            <span className="text-gray-500 text-sm">
+              Updated: {featuredArticleContent.lastUpdated}
+            </span>
           </div>
-          
-          <h2 className="text-2xl font-bold text-indigo-900 mb-4">{featuredArticleContent.title}</h2>
-          
+
+          <h2 className="text-2xl font-bold text-indigo-900 mb-4">
+            {featuredArticleContent.title}
+          </h2>
+
           <div className="prose max-w-none mb-6">
             {featuredArticleContent.content.map((paragraph, index) => (
-              <p key={index} className="text-gray-700 mb-3">{paragraph}</p>
+              <p key={index} className="text-gray-700 mb-3">
+                {paragraph}
+              </p>
             ))}
           </div>
-          
+
           <div className="mt-6 border-t border-gray-200 pt-4">
-            <p className="text-gray-600 text-sm mb-2">Was this article helpful?</p>
+            <p className="text-gray-600 text-sm mb-2">
+              Was this article helpful?
+            </p>
             <div className="flex space-x-3">
-              <button 
-                onClick={() => setArticleFeedback('helpful')}
+              <button
+                onClick={() => setArticleFeedback("helpful")}
                 className={`flex items-center px-4 py-2 rounded-lg text-sm transition-colors ${
-                  articleFeedback === 'helpful' 
-                    ? 'bg-green-100 text-green-700 border border-green-200' 
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                  articleFeedback === "helpful"
+                    ? "bg-green-100 text-green-700 border border-green-200"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
                 }`}
               >
                 <ThumbsUp className="h-4 w-4 mr-2" />
                 Yes, thanks!
               </button>
-              <button 
-                onClick={() => setArticleFeedback('not-helpful')}
+              <button
+                onClick={() => setArticleFeedback("not-helpful")}
                 className={`flex items-center px-4 py-2 rounded-lg text-sm transition-colors ${
-                  articleFeedback === 'not-helpful' 
-                    ? 'bg-red-100 text-red-700 border border-red-200' 
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                  articleFeedback === "not-helpful"
+                    ? "bg-red-100 text-red-700 border border-red-200"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
                 }`}
               >
                 <ThumbsDown className="h-4 w-4 mr-2" />
                 No, I need more help
               </button>
             </div>
-            
-            {articleFeedback === 'not-helpful' && (
-              <div 
+
+            {articleFeedback === "not-helpful" && (
+              <div
                 className="mt-4 bg-indigo-50 p-4 rounded-lg border border-indigo-100 text-indigo-800"
-                style={{ animation: 'fadeInUp 0.3s ease-out' }}
+                style={{ animation: "fadeInUp 0.3s ease-out" }}
               >
                 <p className="font-medium mb-2">Need further assistance?</p>
                 <div className="flex flex-wrap gap-3">
-                  <Link to="/contact-us" className="text-indigo-600 hover:text-indigo-800 font-medium flex items-center text-sm">
+                  <Link
+                    to="/contact-us"
+                    className="text-indigo-600 hover:text-indigo-800 font-medium flex items-center text-sm"
+                  >
                     <Mail className="h-4 w-4 mr-1" />
                     Email Support
                   </Link>
@@ -312,65 +374,74 @@ const Help = () => {
             )}
           </div>
         </div>
-        
+
         {/* Frequently Asked Questions */}
-        <div 
+        <div
           className="bg-white rounded-xl shadow-xl p-8 mb-8 border border-gray-100"
-          style={{ 
-            animation: 'fadeInUp 1.6s ease-out',
+          style={{
+            animation: "fadeInUp 1.6s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
-          <h2 className="text-3xl font-bold text-indigo-900 mb-6">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-indigo-900 mb-6">
+            Frequently Asked Questions
+          </h2>
           <div className="space-y-4">
             {faqItems.map((faq, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="border border-gray-200 rounded-lg overflow-hidden"
               >
-                <button 
+                <button
                   onClick={() => toggleFaq(index)}
                   className={`w-full text-left p-4 flex justify-between items-center focus:outline-none
-                    ${activeFaq === index ? 'bg-indigo-50' : 'bg-white'}`}
+                    ${activeFaq === index ? "bg-indigo-50" : "bg-white"}`}
                 >
-                  <span className="font-medium text-gray-900">{faq.question}</span>
-                  {activeFaq === index ? 
-                    <ChevronUp className="h-5 w-5 text-indigo-600" /> : 
+                  <span className="font-medium text-gray-900">
+                    {faq.question}
+                  </span>
+                  {activeFaq === index ? (
+                    <ChevronUp className="h-5 w-5 text-indigo-600" />
+                  ) : (
                     <ChevronDown className="h-5 w-5 text-indigo-600" />
-                  }
+                  )}
                 </button>
-                <div 
+                <div
                   className="overflow-hidden transition-all duration-300 ease-in-out bg-gray-50"
-                  style={{ 
-                    maxHeight: activeFaq === index ? '200px' : '0',
+                  style={{
+                    maxHeight: activeFaq === index ? "200px" : "0",
                     opacity: activeFaq === index ? 1 : 0,
                   }}
                 >
-                  <div className="p-4 text-gray-700">
-                    {faq.answer}
-                  </div>
+                  <div className="p-4 text-gray-700">{faq.answer}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        
+
         {/* Call to Action */}
-        <div 
+        <div
           className="bg-gradient-to-r from-indigo-800 to-blue-700 rounded-xl shadow-xl p-8 mb-12 text-center"
-          style={{ 
-            animation: 'fadeInUp 1.8s ease-out',
+          style={{
+            animation: "fadeInUp 1.8s ease-out",
             opacity: 1,
-            transform: 'translateY(0)'
+            transform: "translateY(0)",
           }}
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Can't Find What You're Looking For?</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Can't Find What You're Looking For?
+          </h2>
           <p className="text-indigo-100 max-w-3xl mx-auto mb-8">
-            Our support team is ready to provide personalized assistance with any questions or concerns.
+            Our support team is ready to provide personalized assistance with
+            any questions or concerns.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/contact" className="bg-white text-indigo-700 py-3 px-8 rounded-lg font-semibold hover:bg-indigo-50 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center">
+            <Link
+              to="/contact"
+              className="bg-white text-indigo-700 py-3 px-8 rounded-lg font-semibold hover:bg-indigo-50 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center"
+            >
               <Mail className="h-5 w-5 mr-2" />
               Contact Support
             </Link>
