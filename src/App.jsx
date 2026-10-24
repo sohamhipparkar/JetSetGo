@@ -25,12 +25,14 @@ import Terms from "./components/Terms";
 import Login from "./components/Login";
 import Confirmation from "./components/Confirmation";
 import Error from "./components/Error";
+import ChatBot from "./components/ChatBot";
 
 function Root() {
   return (
     <>
       <ScrollToTop />
       <Outlet />
+      <ChatBot />
     </>
   );
 }

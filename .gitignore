@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets — never commit your API key
+.env
+.env.*
+!.env.example
